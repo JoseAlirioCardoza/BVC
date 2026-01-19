@@ -25,12 +25,8 @@ if (!is.null(tabla_bvc)) {
   acciones_final <- tabla_bvc %>%
     as_tibble(.name_repair = "minimal") %>% 
     setNames(paste0("Col", 1:ncol(.))) %>%
-    select(Nombre = Col2, Simbolo = Col3, Precio_Raw = Col4, Var_Raw = Col6) %>%
+    select(Nombre = Col2, Simbolo = Col3, Precio_Bs = Col4, Variacion = Col6) %>%
     filter(str_detect(Simbolo, "^[A-Z]")) %>%
-    mutate(
-      Precio_Bs = as.numeric(str_replace_all(str_replace(Precio_Raw, ",", "."), "\\.", "")),
-      Variacion = as.numeric(str_replace(str_remove_all(Var_Raw, "%"), ",", "."))
-    ) %>%
     filter(!is.na(Precio_Bs))
   
   # 5. Guardar el CSV que leerá tu App
