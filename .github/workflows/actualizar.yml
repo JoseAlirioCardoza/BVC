@@ -20,9 +20,14 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
 
+      - name: Instalar dependencias del sistema Linux
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
+
       - name: Instalar Librerias de R
         run: |
-          Rscript -e 'install.packages(c("chromote", "rvest", "dplyr", "stringr", "readr"))'
+          Rscript -e 'install.packages(c("chromote", "rvest", "dplyr", "stringr", "readr"), dependencies = TRUE)'
 
       - name: Ejecutar Scraper
         run: Rscript script_bvc.R
