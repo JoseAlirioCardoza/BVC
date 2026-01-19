@@ -20,10 +20,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
 
-      - name: Instalar dependencias del sistema Linux
+     - name: Instalar dependencias del sistema Linux
         run: |
           sudo apt-get update
-          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev
+          sudo apt-get install -y libcurl4-openssl-dev libssl-dev libxml2-dev libpng-dev libjpeg-dev libxtst6 libnss3 libatk-bridge2.0-0 libgtk-3-0
 
       - name: Instalar Librerias de R
         run: |
